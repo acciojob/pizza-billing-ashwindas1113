@@ -16,11 +16,9 @@ public class Pizza {
         this.isVeg = isVeg;
         // your code goes here
        if(isVeg){
-           price = 300;
-           bill = Integer.toString(price);
+           this.price += 300;
        }else{
-           price = 400;
-           bill  = Integer.toString(price);
+           this.price += 400;
        }
     }
 
@@ -34,7 +32,6 @@ public class Pizza {
 
         if(!extraCheeseAdded){
             this.price = 80 + price;
-            this.bill = Integer.toString(price);
             extraCheeseAdded = true;
         }
     }
@@ -46,11 +43,9 @@ public class Pizza {
         if(!extraToppingsAdded){
             if(isVeg){
                 this.price = 70 + price;
-                this.bill = Integer.toString(price);
                 extraToppingsAdded = true;
             }else{
                 this.price = 120 + price;
-                this.bill = Integer.toString(price);
                 extraToppingsAdded = true;
             }
         }
@@ -62,13 +57,37 @@ public class Pizza {
 
         if(!paperBagAdded) {
             this.price = 20 + price;
-            this.bill = Integer.toString(price);
             paperBagAdded = true;
         }
     }
 
     public String getBill(){
         // your code goes here
+        if(isVeg){
+            bill =  "Base Price Of The Pizza: 300\n";
+        }else{
+            bill = "Base Price Of The Pizza: 400\n";
+        }
+
+        if(extraCheeseAdded){
+            bill = bill + "Extra Cheese Added: 80\n";
+        }
+
+        if(extraToppingsAdded){
+            if(isVeg){
+                bill = bill + "Extra Toppings Added: 70\n";
+            }else{
+                bill = bill + "Extra Toppings Added: 120\n";
+            }
+        }
+
+        if(paperBagAdded){
+            bill = bill + "Paperbag Added: 20\n";
+        }
+
+        String totalPrice = Integer.toString(price);
+        bill = bill + "Total Price: " + totalPrice + "\n";
         return this.bill;
+
     }
 }
